@@ -35,7 +35,7 @@ function ChatContainer() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [isSending, setIsSending] = useState(false);
-
+// Triggered when paperclip clicked to upload file. 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
@@ -47,11 +47,11 @@ function ChatContainer() {
       });
     }
   };
-
+//removes image from UI
   const removeImage = (index: number) => {
     setImages(images.filter((_, i) => i !== index));
   };
-
+//Triggered when typing in message box
   const handleMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
   };
@@ -81,7 +81,7 @@ function ChatContainer() {
     // Update the messages state to include the new user message
     setMessages((prevMessages) => [...prevMessages, newUserMessage]);
 
-    // Convert images to base64 strings for the backend
+    // Convert images to base64 strings for the backend. Will create string representation of the image
     const imagePromises = images.map((file) => {
       return new Promise<string>((resolve, reject) => {
         const reader = new FileReader();

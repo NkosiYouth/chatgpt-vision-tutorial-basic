@@ -18,8 +18,6 @@ const imageContentSchema = z.object({
 
 // Create a union of text and image content schemas
 const contentSchema = z.union([textContentSchema, imageContentSchema]);
-
-// Define the schema for a message
 const messageSchema = z.object({
   role: z.enum(["user", "assistant", "system"]),
   content: z.array(contentSchema),
